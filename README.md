@@ -1,0 +1,2 @@
+# combat-springcloud
+基于SpringCloud的脚手架项目，主要用于学习springCloud
