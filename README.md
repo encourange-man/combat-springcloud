@@ -1,2 +1,10 @@
-# combat-springcloud
-基于SpringCloud的脚手架项目，主要用于学习springCloud
+# SpringCloud主要组件介绍
+TODO: spring Cloud + nginx 应用架构图（1.1章节）
+
+Nginx作为反向代理服务器，代理内部Zuul网关服务，通过Nginx自带的负载均衡算法实现客户端请求的代理转发、负载均衡等功能。
+
+Zuul网关主要实现了微服务集群内部的请求路由、负载均衡、统一校验等功能。虽然在路由服务和负载均衡方面，Zuul和Nginx的功能比较类似，但是Zuul是自身注册到Eureka/Nacos，通过微服务的serviceID实现微服务提供者之间的路由和转发。
+
+Eureka、Nacos都是Spring Cloud技术体系中提供服务注册与发现的中间件。Nacos除了具备Eureka注册中心功能外，还具备Spring Cloud Config配置中心的功能，因此大大地降低了使用和维护的成本。另外，Nacos还具有分组隔离功能，一套Nacos集群可以支撑多项目、多环境。综合上述多个原因，在实际的开发场景中，推荐大家使用Nacos。
+
+在Spring Cloud生态中，微服务提供者Provider之间的远程调用是通过Feign+Ribbon+Hystrix组合来完成的：Feign用于完成RPC远程调用的代理封装；Ribbon用于在客户端完成各远程目标服务实例之间的负载均衡；Hystrix用于完成自动熔断降级等多个维度的RPC保护。
